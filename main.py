@@ -34,7 +34,7 @@ class Mydialog(StatesGroup):
 @dp.message_handler(commands=["dsds"])
 async def dt(user_id :str):
     print(user_id)
-    await bot.send_message("5049162934","dsdsds")
+    await bot.send_message(user_id,"Напоминалка")
  
  
 async def scheduler():
@@ -45,7 +45,7 @@ async def scheduler():
             time = j.time_end
             time = j.time_end
             year, month, day, hour, minute = time.strftime("%Y"), time.strftime("%m"),time.strftime("%d"),time.strftime("%H"),time.strftime("%M")
-            aioschedule.every().day(day).hour(hour).minute(minute).do(dt,"date",user_id = "5049162934",)#.hour = и тд
+            aioschedule.every().day(day).hour(hour).minute(minute).do(dt,"date",user_id = i.user,)#.hour = и тд
             while True:
                 await aioschedule.run_pending()
                 await asyncio.sleep(1)          
